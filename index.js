@@ -45,17 +45,29 @@ const urlencodedParser = bodyParser.urlencoded({
 })
 const jsonParser = bodyParser.json()
 
-// POST /login gets urlencoded bodies
+//----------------------------- POST calls ----------------------------------------//
+// POST /login
 app.post('/login', urlencodedParser, controllers.user.search);
+
 // POST /register
 app.post('/register', urlencodedParser, controllers.user.create);
 
-// POST /train
-app.post('/api/addJob', urlencodedParser, middleware.checkToken, controllers.job.create);
+// POST /api/job/new
+app.post('/api/job/new', urlencodedParser, middleware.checkToken, controllers.job.create);
+
+//----------------------------- GET calls ----------------------------------------//
+// GET /api/jobs
 app.get('/api/jobs', urlencodedParser, middleware.checkToken, controllers.job.userJobs);
-app.get('/api/allJobs', urlencodedParser, middleware.checkToken, controllers.job.allJobs);
-app.get('/api/userJobs', urlencodedParser, middleware.checkToken, controllers.job.searchUserJob);
+
+// GET /api/jobs/all
+app.get('/api/jobs/all', urlencodedParser, middleware.checkToken, controllers.job.allJobs);
+
+// GET /api/jobs/user
+app.get('/api/jobs/user', urlencodedParser, middleware.checkToken, controllers.job.searchUserJob);
+
+// GET /api/job
 app.get('/api/job', urlencodedParser, middleware.checkToken, controllers.job.search);
+
 
 // Starting both http & https servers
 const httpServer = http.createServer(app);

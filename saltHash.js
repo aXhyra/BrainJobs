@@ -33,9 +33,6 @@ const sha512 = (password, salt) => {
 const saltHashPassword = (userpassword) => {
     const salt = genRandomString(16); /** Gives us salt of length 16 */
     const passwordData = sha512(userpassword, salt);
-    console.log('UserPassword = ' + userpassword);
-    console.log('Passwordhash = ' + passwordData.passwordHash);
-    console.log('nSalt = ' + passwordData.salt);
     return passwordData;
 }
 

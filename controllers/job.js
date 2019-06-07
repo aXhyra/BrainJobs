@@ -1,6 +1,7 @@
 const Job = require('../models').Job;
 
-const languages = ['python',
+const languages = [
+    'python',
     'java',
     'scala',
     'r',
@@ -8,7 +9,8 @@ const languages = ['python',
     'julia'
 ];
 
-const frameworks = ['pytorch',
+const frameworks = [
+    'pytorch',
     'tensorflow',
     'caffe',
     'keras',
@@ -55,7 +57,6 @@ module.exports = {
                     error: err,
                     message: 'an error happened during the creation of the job. try again'
                 });
-                console.log(err);
             })
             }
     },
@@ -118,7 +119,6 @@ module.exports = {
             }));
     },
     searchUserJob(req, res) {
-        console.log("req id: " + req.decoded);
         if (req.decoded.user_id == 1) {
             const user_id = req.query.user_id;
             return Job
