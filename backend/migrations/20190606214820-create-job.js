@@ -27,7 +27,8 @@ module.exports = {
         type: Sequelize.STRING
       },
       framework: {
-        allowNull: true,
+        allowNull: false,
+        defaultValue: 'none',
         type: Sequelize.STRING
       },
       dataset: {

@@ -15,6 +15,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     framework: {
       type: DataTypes.STRING,
+      defaultValue: 'none',
       allowNull: true
     },
     dataset: {

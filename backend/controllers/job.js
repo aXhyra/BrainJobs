@@ -22,14 +22,15 @@ const frameworks = [
 module.exports = {
     create(req, res) {
         const language = req.body.language;
-        const framework = req.body.framework; 
+        const framework = req.body.framework;
+        console.log(framework)
 
         if (!languages.includes(language)) {
             res.status(400).json({
                 success: false,
                 message: 'incorrect language'
             });
-        } else if (!frameworks.includes(framework)) {
+        } else if (!frameworks.includes(framework) && framework) {
             res.status(400).json({
                 success: false,
                 message: 'incorrect framework'
@@ -57,6 +58,7 @@ module.exports = {
                     error: err,
                     message: 'an error happened during the creation of the job. try again'
                 });
+                console.log(err);
             })
             }
     },
