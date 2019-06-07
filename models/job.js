@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     framework: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: true
     },
     dataset: {
       type: DataTypes.STRING,
