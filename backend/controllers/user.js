@@ -7,30 +7,46 @@ module.exports = {
     create(req, res) {
         const hash = saltHash(req.body.password)
         return User
-            .create({
+            .findOrCreate( {
+                where: {username: req.body.username},
+                defaults: {
                 username: req.body.username,
                 email: req.body.email,
                 password: hash.passwordHash,
                 salt: hash.salt
-            })
-            .then(user => res.status(201).json({
-                success: true,
-                message: 'User created'
-            }))
-            .catch(error => res.status(400).send(error));
+            }})
+            .then(user => {
+                if (user[1]) {
+                    res.json({
+                        statusC: 200,
+                        success: true,
+                        message: 'User created'
+                    });
+                } else {
+                    res.json({
+                        statusC: 409,
+                        success: false,
+                        message: 'User already exists'
+                    })
+                }
+
+        })
+            .catch(error => res.status(200).send(error));
     },
     search(req, res) {
         return User
             .findOne({
                 where: { username: req.body.username },
-                attributes: ['id', 'password', 'salt']
+                attributes: ['id', 'username', 'password', 'salt']
             })
             .then(user => {
+                let isAdmin = (user.username == 'admin')
                 const token = jwt.sign({
-                        user_id: user.id
+                        user_id: user.id,
+                        isAdmin: isAdmin
                     },
                     config.secret, {
-                        expiresIn: (30 * 60 * 1000)
+                        expiresIn: '1h'
                     }
                 );
                 if (saltHash.sha512(req.body.password, user.salt).passwordHash === user.password) {
@@ -40,13 +56,15 @@ module.exports = {
                         toekn: token
                     })
                 } else {
-                    res.status(400).json({
+                    res.json({
+                        statusC: 400,
                         success: false,
                         message: 'Invalid username or password'
                     })
                 }
             })
-            .catch(err => res.status(400).json({
+            .catch(err => res.json({
+                status: 400,
                 success: false,
                 message: 'Invalid username or password'
             }))

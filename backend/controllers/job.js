@@ -23,46 +23,50 @@ module.exports = {
     create(req, res) {
         const language = req.body.language;
         const framework = req.body.framework;
-        console.log(framework)
+        console.log(framework);
+        console.log("Body: " + req.body);
 
         if (!languages.includes(language)) {
-            res.status(400).json({
+            res.json({
+                statusC: 400,
                 success: false,
                 message: 'incorrect language'
             });
         } else if (!frameworks.includes(framework) && framework) {
-            res.status(400).json({
+            res.json({
+                statusC: 400,
                 success: false,
                 message: 'incorrect framework'
             });
         } else {
             return Job
                 .create({
-                    user_id: req.decoded.user_id,
+                    user_id: req.body.user_id,
                     title: req.body.title,
                     language: language,
                     framework: framework,
                     dataset: req.body.dataset,
                     dataset_datatype: req.body.dataset_datatype,
                     model: req.body.model,
-                    created_at: Date.now(),
                     status: 'created'
                 })
-                .then(job => res.status(201).json({
+                .then(job => res.json({
+                    statusC: 201,
                     success: true,
                     job_id: job.id,
                     status: 'created'
                 }))
-                .catch(err => {res.status(400).json({
+                .catch(err => {res.json({
+                    statusC: 400,
                     success: false,
-                    error: err,
-                    message: 'an error happened during the creation of the job. try again'
+                    message: err.errors[0].message
                 });
                 console.log(err);
             })
             }
     },
     userJobs(req, res) {
+        console.log('HEY ' + req.query.user_id)
         return Job
             .findAll({
                 attributes: [
@@ -73,16 +77,31 @@ module.exports = {
                     'model',
                     'status'
                 ],
-                where: { user_id: req.decoded.user_id },
+                where: {
+                    user_id: req.query.user_id
+                },
             })
-            .then(job => res.status(200).send(job))
-            .catch(err => res.status(400).json({
+            .then(jobs => {
+                if (jobs) {
+                    res.status(200).send(jobs)
+                } else {
+                    res.json({
+                        statusC: 404,
+                        success: false,
+                        message: 'user has no jobs'
+                    })
+                }
+            })
+            .catch(err => {res.json({
+                statusC: 400,
                 success: false,
-                message: 'An error occoured during rhe query'
-            }));
+                message: 'An error occoured during the query' 
+            });
+            console.log(err);
+        })
     },
     allJobs(req, res) {
-        if (req.decoded.user_id == 1) {
+        if (req.query.isAdmin === 'true') {
             return Job
                 .findAll({
                     attributes: [
@@ -95,12 +114,14 @@ module.exports = {
                     ]
                 })
                 .then(job => res.status(200).send(job))
-                .catch(err => res.status(400).json({
+                .catch(err => res.json({
+                    statusC: 400,
                     success: false,
                     message: 'An error occoured during query creation'
                 }))
             } else {
-                res.status(401).json({
+                res.json({
+                    statusC: 401,
                     success: false,
                     message: 'Only admin can view all jobs'
                 })
@@ -109,20 +130,43 @@ module.exports = {
     search(req, res) {
         return Job
             .findOne({
+                attributes: {
+                    include: [
+                        ['id', 'job_id'],
+                        ['createdAt', 'created_at'],
+                        ['updatedAt', 'updated_at']
+                    ],
+                    exclude: [
+                        'id',
+                        'createdAt',
+                        'updatedAt'
+                    ]
+                },
                 where: {
-                    user_id: req.decoded.user_id,
-                    id: req.query.job_id
+                    user_id: req.query.user_id,
+                    id: req.params.job_id
                 }
             })
-            .then(job => res.status(200).send(job))
-            .catch(err => res.status(400).json({
+            .then(job => {
+                if (job) {
+                    res.status(200).send(job)
+                } else {
+                    res.json({
+                        statusC: 404,
+                        success: false,
+                        message: 'job not found'
+                    })
+                }
+            })
+            .catch(err => res.json({
+                statusC: 400,
                 success: false,
                 message: 'Error while excecuting query'
             }));
     },
-    searchUserJob(req, res) {
-        if (req.decoded.user_id == 1) {
-            const user_id = req.query.user_id;
+    searchUserJobs(req, res) {
+        if (req.query.isAdmin) {
+            const user_id = req.params.user_id;
             return Job
                 .findAll({
                     where: {
@@ -130,15 +174,40 @@ module.exports = {
                     }
                 })
                 .then(job => res.status(200).send(job))
-                .catch(err => res.status(400).json({
+                .catch(err => res.json({
+                    statusC: 400,
                     success: false,
                     message: 'Error while excecuting query'
                 }));
             } else {
-                res.status(401).json({
+                res.json({
+                    statusC: 401,
                     success: false,
                     message: "Only admin can view user jobs"
                 })
             }
+    },
+    searchUserJob(req, res) {
+        if (req.query.isAdmin === 'true') {
+            return Job
+                .findOne({
+                    where: {
+                        user_id: req.params.user_id,
+                        id: req.params.job_id
+                    }
+                })
+                .then(job => res.status(200).send(job))
+                .catch(err => res.json({
+                    statusC: 400,
+                    success: false,
+                    message: 'Error while excecuting query'
+                }));
+        } else {
+            res.json({
+                statusC: 401,
+                success: false,
+                message: "Only admin can view user jobs"
+            })
+        }
     }
 }

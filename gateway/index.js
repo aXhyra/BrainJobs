@@ -46,14 +46,14 @@ const urlencodedParser = bodyParser.urlencoded({
 })
 const jsonParser = bodyParser.json()
 
+// Starting both http & https servers
+const httpServer = http.createServer(app);
+const httpsServer = https.createServer(credentials, app);
 
-//----------------------------- POST calls ----------------------------------------//
-// POST /login
-app.post('/login', urlencodedParser, controllers.user.search);
+httpServer.listen(80, () => {
+    console.log('HTTP Server running on port 80');
+});
 
-// POST /register
-app.post('/register', urlencodedParser, controllers.user.create);
-
-// POST /api/job/new
-app.post('/api/job/new', urlencodedParser, middleware.checkToken, controllers.job.create);
-
+httpsServer.listen(443, () => {
+    console.log('HTTPS Server running on port 443');
+});
