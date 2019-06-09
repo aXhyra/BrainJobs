@@ -82,7 +82,7 @@ module.exports = {
                 },
             })
             .then(jobs => {
-                if (jobs) {
+                if (jobs.length != 0) {
                     res.status(200).send(jobs)
                 } else {
                     res.json({

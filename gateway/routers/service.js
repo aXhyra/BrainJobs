@@ -113,5 +113,8 @@ router.get('/api/user/:user_id/job/:job_id', middleware.checkToken, (req, res) =
 
 router.get('/api/docs', docs);
 
+router.get('/logs', (req, res) => {
+    res.sendFile('/home/alind/Sistemi_distribuiti/log.log');
+})
 
 module.exports = router
