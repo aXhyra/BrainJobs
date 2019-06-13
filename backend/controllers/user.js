@@ -18,20 +18,18 @@ module.exports = {
             .then(user => {
                 if (user[1]) {
                     res.json({
-                        statusC: 200,
                         success: true,
                         message: 'User created'
                     });
                 } else {
-                    res.json({
-                        statusC: 409,
+                    res.status(409).json({
                         success: false,
                         message: 'User already exists'
                     })
                 }
 
         })
-            .catch(error => res.status(200).send(error));
+            .catch(error => res.status(409).send(error));
     },
     search(req, res) {
         return User
@@ -50,21 +48,20 @@ module.exports = {
                     }
                 );
                 if (saltHash.sha512(req.body.password, user.salt).passwordHash === user.password) {
-                    res.status(200).json({
+                    res.json({
                         success: true,
                         message: 'logged in',
-                        toekn: token
+                        isAdmin: isAdmin,
+                        token: token
                     })
                 } else {
-                    res.json({
-                        statusC: 400,
+                    res.status(400).json({
                         success: false,
                         message: 'Invalid username or password'
                     })
                 }
             })
-            .catch(err => res.json({
-                status: 400,
+            .catch(err => res.status(400).json({
                 success: false,
                 message: 'Invalid username or password'
             }))

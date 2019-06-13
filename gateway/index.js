@@ -8,7 +8,8 @@ const redirectToHTTPS = require('express-http-to-https').redirectToHTTPS
 const morgan = require('morgan');
 const path = require('path');
 const app = express();
-var router = require('./routers/router')
+var router = require('./routers/router');
+const log = require('simple-node-logger').createSimpleLogger('../log.log');
 
 const privateKey = fs.readFileSync('/etc/letsencrypt/live/www.brainjobs.tk/privkey.pem', 'utf8');
 const certificate = fs.readFileSync('/etc/letsencrypt/live/www.brainjobs.tk/cert.pem', 'utf8');
@@ -34,11 +35,9 @@ app.use(redirectToHTTPS());
 
 app.use(router);
 
-app.use(morgan(':remote-addr - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :req[header] :status :response-time ms :res[content-length] :res[header] ":referrer" ":user-agent"', {
-    stream: fs.createWriteStream(path.join(__dirname, 'access.log'), {
-        flags: 'a'
-    })
-}));
+app.use(morgan(
+    ':remote-addr - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :req[header] :status :response-time ms :res[content-length] :res[header] ":referrer" ":user-agent"'
+));
 
 // create application/x-www-form-urlencoded parser
 const urlencodedParser = bodyParser.urlencoded({

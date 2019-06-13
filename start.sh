@@ -1,4 +1,7 @@
 cd backend
-npm start & >> backend.log
+npm start &
 cd ../gateway
-npm start & >> gateway.log
+npm start &
+cd ../frontend
+npm run serve &&
+fg
