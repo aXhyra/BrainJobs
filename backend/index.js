@@ -10,6 +10,8 @@ const controllers = require('./controllers');
 const middleware = require('./middleware');
 const log = require('simple-node-logger').createSimpleLogger('../log.log');
 
+log.setLevel('debug');
+
 app.use(bodyParser.urlencoded({
     extended: false
 }))

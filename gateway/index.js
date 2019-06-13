@@ -6,10 +6,11 @@ const https = require('https');
 const fs = require('fs');
 const redirectToHTTPS = require('express-http-to-https').redirectToHTTPS
 const morgan = require('morgan');
-const path = require('path');
 const app = express();
 var router = require('./routers/router');
 const log = require('simple-node-logger').createSimpleLogger('../log.log');
+
+log.setLevel('debug');
 
 const privateKey = fs.readFileSync('/etc/letsencrypt/live/www.brainjobs.tk/privkey.pem', 'utf8');
 const certificate = fs.readFileSync('/etc/letsencrypt/live/www.brainjobs.tk/cert.pem', 'utf8');

@@ -1,12 +1,13 @@
+const uuid = require('uuid/v4');
+
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('Users', {
       id: {
-        autoIncrement: true,
+        type: Sequelize.UUID,
         allowNull: false,
         primaryKey: true,
-        type: Sequelize.INTEGER
       },
       username: {
         type: Sequelize.STRING,
@@ -25,7 +26,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       job_id: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.UUID,
         onDelete: 'CASCADE',
         references: {
           model: 'Jobs',

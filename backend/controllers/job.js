@@ -158,6 +158,18 @@ module.exports = {
             const user_id = req.params.user_id;
             return Job
                 .findAll({
+                    attributes: {
+                        include: [
+                            ['id', 'job_id'],
+                            ['createdAt', 'created_at'],
+                            ['updatedAt', 'updated_at']
+                        ],
+                        exclude: [
+                            'id',
+                            'createdAt',
+                            'updatedAt'
+                        ]
+                    },
                     where: {
                         user_id: user_id
                     }
@@ -187,6 +199,18 @@ module.exports = {
         if (req.decoded.isAdmin) {
             return Job
                 .findOne({
+                    attributes: {
+                        include: [
+                            ['id', 'job_id'],
+                            ['createdAt', 'created_at'],
+                            ['updatedAt', 'updated_at']
+                        ],
+                        exclude: [
+                            'id',
+                            'createdAt',
+                            'updatedAt'
+                        ]
+                    },
                     where: {
                         user_id: req.params.user_id,
                         id: req.params.job_id

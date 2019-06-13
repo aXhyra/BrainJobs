@@ -29,7 +29,10 @@ module.exports = {
                 }
 
         })
-            .catch(error => res.status(409).send(error));
+            .catch(error => {
+                console.log(error)
+                res.status(400).send(error)
+            });
     },
     search(req, res) {
         return User
