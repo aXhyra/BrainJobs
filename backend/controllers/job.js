@@ -99,6 +99,7 @@ module.exports = {
                 .findAll({
                     attributes: [
                         ['id', 'job_id'],
+                        'user_id',
                         'title',
                         'language',
                         'framework',

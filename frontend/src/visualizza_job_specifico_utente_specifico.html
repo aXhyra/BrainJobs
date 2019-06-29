@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+    <head>
+        <title>BrainJobs</title>
+        <link href="stile.css" rel="stylesheet" type="text/css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+        <script src="inserisci_visualizza.js"></script>
+    </head>
+    <body id="body">
+        <div id="generale">
+            <div id="menu">
+                <div id="menu0" class="menu_n" onclick=vis_vis()>
+                    <h3>visualizza</h3>
+                </div>
+                <div id="menu1" class="menu_n" onclick=vis_ins()>
+                    <h3>inserisci</h3>
+                </div>
+                <div id="menu2" class="menu_n" onclick=vis_vis_ins()>
+                    <h3>visualizza singolo jobs</h3>
+                </div>
+                <div id="menu3" class="menu_n" onclick=vis_glob()>
+                    <h3>visualizza globale</h3>
+                </div>
+                <div id="menu4" class="menu_n" onclick=vis_spec()>
+                    <h3>visualizza job utente specifico</h3>
+                </div>
+                <div id="menu5" class="menu_n" onclick=vis_job_spec()>
+                    <h3>visualizza job specifico</h3>
+                </div>
+            </div>          
+            <div id="contenitore">
+                <fieldset  id="fiel_visualizza_singola" class="fiel">
+                <legend>inserire dati per visualizza singola richiesta</legend>
+                <label class="label_login">inserire user_id</label>
+                <input type="text" id="ins_user_id_specifico_specifico">
+                <label class="label_login">inserire job</label>
+                <input type="text" id="ins_user_job_id_specifico_specifico">
+                <br><br>
+                <button id="bot_visualizza_singola" onclick=visualizza_job_specifico_utente_specifico()>visualizza dati utente</button>
+                </fieldset>                
+            </div>
+            <p id="visualizza_job_specifico_utente_specifico_dati"></p>
+        </div>
+    </body>
+</html>

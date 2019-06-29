@@ -68,5 +68,21 @@ module.exports = {
                 success: false,
                 message: 'Invalid username or password'
             }))
+    },
+    getUsers(req, res) {
+        if (req.decoded.isAdmin) {
+            return User
+                .findAll({
+                    attributes: 'username'
+                })
+                .then(user => {
+                    res.send(user);
+                })
+                .catch(err => {
+                    res.status(500).send(err);
+                })
+            } else {
+                res.sendStatus(401);
+            }
     }
 }

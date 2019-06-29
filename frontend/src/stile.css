@@ -1,0 +1,136 @@
+#primo
+{
+    background-color: whitesmoke;
+    border-color: black;
+    border-width: 20px;
+    border-radius: 5px;
+    width: 95%;
+    text-align: justify;
+    padding: 1%;
+    margin-left: 2%;
+}
+
+#generale
+{
+    background-color: #5ac0e1;
+    border-color: black;
+    border-width: 20px;
+    border-radius: 5px;
+    width: 95%;
+    text-align: justify;
+    padding: 1%;
+    margin-left: 2%;
+}
+
+#body
+{
+    background-color: #5ac0e1;
+    border-radius:5px;
+}
+
+#testo_sopra
+{
+    background-color: #70e1f8;
+    padding-bottom: 8%;
+    border-radius:5px;
+}
+
+#titolo
+{
+    float: left;
+    background-color: #70e1f8;
+    width:20%;
+    text-align: center;
+    border-radius:5px;
+}
+
+#autenticazione
+{
+    float: right;
+    background-color: #70e1f8;
+    width:20%;
+    margin-top:1%;
+    margin-right:1%;
+    border-radius:5px;
+}
+
+#testo_sotto
+{
+    background-color: whitesmoke;
+    padding: 1%;
+}
+
+.label_login
+{
+    margin-top:2%;
+    display: block;
+}
+
+.fiel
+{
+    margin-top:1%;
+    border-color: white;
+    background-color: whitesmoke;
+}
+
+#immagini
+{
+    background-color: whitesmoke;
+    padding:3%;
+}
+#img1
+{
+    margin-right:10%;
+}
+#img2
+{
+    margin-right:10%;
+}
+
+#sezione_visualizza
+{
+    margin-top:5%;
+}
+.div_visualizza
+{
+    background-color: whitesmoke;
+    padding: 1%;
+    margin:2%;;
+    border-radius: 5px;
+    margin-left:9%;
+    width:80%;
+}
+
+#menu
+{
+    background-color: #70e1f8;
+    height: 70px;
+    padding:1%;
+    border-radius:5px;
+}
+#menu0
+{
+    border:1px solid grey;
+    border-radius:5px;
+    background-color: whitesmoke;
+    float:left;
+    padding:5px;
+}
+.menu_n
+{
+    border:1px solid grey;
+    border-radius:5px;
+    background-color: whitesmoke;
+    float:left;
+    padding:5px;
+}
+
+#contenitore
+{
+    margin-top:2%;
+    margin-left:9%;
+    width:80%;
+    background-color: whitesmoke;
+    padding: 1%;
+    border-radius:5px;
+}

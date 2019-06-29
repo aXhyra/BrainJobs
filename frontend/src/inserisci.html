@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>BrainJobs</title>
+        <link href="stile.css" rel="stylesheet" type="text/css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+        <script src="inserisci_visualizza.js"></script>
+    </head>
+    <body id="body">
+        <div id="generale">
+            <div id="menu">
+                <div id="menu0" class="menu_n" onclick=vis_vis()>
+                    <h3>visualizza</h3>
+                </div>
+                <div id="menu1" class="menu_n" onclick=vis_ins()>
+                    <h3>inserisci</h3>
+                </div>
+                <div id="menu2" class="menu_n" onclick=vis_vis_ins()>
+                    <h3>visualizza singolo jobs</h3>
+                </div>
+                <div id="menu3" class="menu_n" onclick=vis_glob()>
+                    <h3>visualizza globale</h3>
+                </div>
+                <div id="menu4" class="menu_n" onclick=vis_spec()>
+                    <h3>visualizza job utente specifico</h3>
+                </div>
+                <div id="menu5" class="menu_n" onclick=vis_job_spec()>
+                    <h3>visualizza job specifico</h3>
+                </div>
+            </div>           
+            <div id="contenitore">
+                <fieldset id="fiel_inserisci" class="fiel">
+                    <legend>form inserimento nuova richiesta di allenamento</legend>
+                    <label class="label_login">inserire titolo</label>
+                    <input type="text" id="ins_titolo">
+                    <label class="label_login">inserire linguaggio</label>
+                    <select id="ins_linguaggio">
+                        <option value="python">python</option>
+                        <option value="java">java</option>
+                        <option Value="scala">scala</option>
+                        <option value="r">r</option>
+                        <option value="c++">c++</option>
+                        <option value="julia">julia</option>
+                    </select>
+                    <label class="label_login">inserire framework</label>
+                    <select id="ins_frame">
+                        <option value="nessuno">nessuno</option>
+                        <option value="pytorch">pytorch</option>
+                        <option value="tensorflow">tensorflow</option>
+                        <option Value="caffe">caffe</option>
+                        <option value="keras">keras</option>
+                        <option value="deeplearning4j">deeplearning4j++</option>
+                        <option value="apache_mahout">apache_mahout</option>
+                        <option value="apache_singa">apache_singa</option>
+                    </select>
+                    <label class="label_login">inserire dataset</label>
+                    <input type="text" id="ins_dataset">
+                    <label class="label_login">inserire datatype del dataset</label>
+                    <select id="ins_datatype">
+                        <option value="csv">csv</option>
+                        <option value="avro">avro</option>
+                        <option value="json">json</option>
+                    </select>
+                    <label class="label_login">inserire model</label>
+                    <input type="text" id="ins_model">
+                    <br><br>
+                    <button onclick="inserisci()">inserisci nuova richiesta</button>   
+                </fieldset>          
+            </div>
+        </div>
+    </body>
+</html>

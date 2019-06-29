@@ -9,6 +9,7 @@ const morgan = require('morgan');
 const app = express();
 var router = require('./routers/router');
 const log = require('simple-node-logger').createSimpleLogger('../log.log');
+const helmet = require('helmet');
 
 log.setLevel('debug');
 
@@ -22,11 +23,11 @@ const credentials = {
     ca: ca
 };
 
+app.use(helmet());
+
 app.use(bodyParser.urlencoded({
     extended: false
 }))
-
-app.disable('x-powered-by');
 
 app.use(cors());
 
@@ -50,10 +51,10 @@ const jsonParser = bodyParser.json()
 const httpServer = http.createServer(app);
 const httpsServer = https.createServer(credentials, app);
 
-httpServer.listen(80, () => {
-    console.log('HTTP Server running on port 80');
+httpServer.listen(8080, () => {
+    console.log('HTTP Gateway Server running on port 8080');
 });
 
-httpsServer.listen(443, () => {
-    console.log('HTTPS Server running on port 443');
+httpsServer.listen(8443, () => {
+    console.log('HTTPS Gateway Server running on port 8443');
 });

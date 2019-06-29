@@ -107,6 +107,18 @@ router.get('/api/user/:user_id/job/:job_id', middleware.checkToken, (req, res) =
         })
 })
 
+router.get('/api/users', middleware.checkToken, (req, res) => {
+    api.get(req.path, {
+        headers: req.params
+    })
+        .then(resp => {
+            res.send(resp.data);
+        })
+        .catch(err => {
+            res.status(err.response.status).send(err.response.data)
+        })
+})
+
 router.get('/api/docs', docs);
 
 router.get('/logs', (req, res) => {
@@ -114,7 +126,7 @@ router.get('/logs', (req, res) => {
 })
 
 router.get('*', (req, res) => {
-    res.status(404).send('<img src="https://http.cat/404"/>');
+    res.status(404).send('Not Found');
 })
 
 module.exports = router

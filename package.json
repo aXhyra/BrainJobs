@@ -1,0 +1,20 @@
+{
+  "name": "sistemi_distribuiti",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "./start.sh",
+    "install": "./run.sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aXhyra/BrainJobs.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aXhyra/BrainJobs/issues"
+  },
+  "homepage": "https://github.com/aXhyra/BrainJobs#readme"
+}

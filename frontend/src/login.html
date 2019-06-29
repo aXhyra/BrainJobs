@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>BrainJobs</title>
+        <link href="stile.css" rel="stylesheet" type="text/css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+        <script src="index.js"></script>
+    </head>
+    <body id="body">
+        <div id="primo">
+                <div id="testo_sopra">
+                        <div id="titolo">
+                            <h1>
+                                login
+                            </h1>
+                        </div>
+                        <div id="autenticazione">
+                            <div id="menu0" class="menu_n" onclick=vis_home()>
+                                <h3>home</h3>
+                            </div>
+                            <div id="menu1" class="menu_n" onclick=vis_login()>
+                                <h3>login</h3>
+                            </div>
+                            <div id="menu2" class="menu_n" onclick=vis_registrazione()>
+                                <h3>registrazione</h3>
+                            </div>
+                        </div>
+                    </div>
+            <fieldset id="fiel1" class="fiel">
+                <legend>form inserimento per login</legend>
+                <label class="label_login">inserire email utente</label>
+                <input type="text" id="user" name="user">
+                <label class="label_login">inserire password</label>
+                <input type="password" id="password" name="password">
+                <br><br>
+                <button onclick="login()">login</button>
+            </fieldset>
+        </div>
+    </body>
+</html>

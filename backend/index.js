@@ -2,15 +2,10 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const http = require('http');
-const fs = require('fs');
 const morgan = require('morgan');
-const path = require('path');
 const app = express();
 const controllers = require('./controllers');
 const middleware = require('./middleware');
-const log = require('simple-node-logger').createSimpleLogger('../log.log');
-
-log.setLevel('debug');
 
 app.use(bodyParser.urlencoded({
     extended: false
@@ -60,6 +55,9 @@ app.get('/api/user/:user_id/jobs', urlencodedParser, middleware.checkToken, cont
 
 // GET /api/user/:user_id/job/:job_id
 app.get('/api/user/:user_id/job/:job_id', urlencodedParser, middleware.checkToken, controllers.job.searchUserJob);
+
+// GET /api/users
+app.get('/api/users', urlencodedParser, middleware.checkToken, controllers.user.getUsers);
 
 // Starting both http & https servers
 const httpServer = http.createServer(app);
