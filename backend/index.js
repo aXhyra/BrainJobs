@@ -2,35 +2,30 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const http = require('http');
-const morgan = require('morgan');
 const app = express();
 const controllers = require('./controllers');
 const middleware = require('./middleware');
+const helmet = require('helmet');
 
 app.use(bodyParser.urlencoded({
     extended: false
 }))
 
-app.disable('x-powered-by');
-
 app.use(cors());
 
-app.use(bodyParser.json())
+app.use(helmet())
 
-app.use(morgan(
-    ':remote-addr - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :req[header] :status :response-time ms :res[content-length] :res[header] ":referrer" ":user-agent"'
-    ));
+app.use(bodyParser.json())
 
 // create application/x-www-form-urlencoded parser
 const urlencodedParser = bodyParser.urlencoded({
     extended: false
 })
-const jsonParser = bodyParser.json()
 
 //----------------------------- POST calls ----------------------------------------//
 
 // POST /login
-app.post('/login', urlencodedParser,controllers.user.search);
+app.post('/login', urlencodedParser, controllers.user.search);
 
 // POST /register
 app.post('/register', urlencodedParser, controllers.user.create);

@@ -9,7 +9,7 @@ let checkToken = (req, res, next) => {
             success: false,
             message: 'Auth token is not supplied'
         });
-    } else { 
+    } else {
         if (token.startsWith('Bearer ')) {
             // Remove Bearer from string
             token = token.slice(7, token.length);

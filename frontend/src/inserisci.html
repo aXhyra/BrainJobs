@@ -10,39 +10,42 @@
         <div id="generale">
             <div id="menu">
                 <div id="menu0" class="menu_n" onclick=vis_vis()>
-                    <h3>visualizza</h3>
+                    <h3>i miei job</h3>
                 </div>
                 <div id="menu1" class="menu_n" onclick=vis_ins()>
-                    <h3>inserisci</h3>
+                    <h3>nuovo job</h3>
                 </div>
                 <div id="menu2" class="menu_n" onclick=vis_vis_ins()>
-                    <h3>visualizza singolo jobs</h3>
+                    <h3>ricerca job</h3>
                 </div>
-                <div id="menu3" class="menu_n" onclick=vis_glob()>
-                    <h3>visualizza globale</h3>
+                <div id="menu3" class="menu_n" onclick=vis_glob() style="display: none;">
+                    <h3>tutti i job</h3>
                 </div>
-                <div id="menu4" class="menu_n" onclick=vis_spec()>
-                    <h3>visualizza job utente specifico</h3>
+                <div id="menu4" class="menu_n" onclick=vis_spec() style="display: none;">
+                    <h3>ricerca jobs utente</h3>
                 </div>
-                <div id="menu5" class="menu_n" onclick=vis_job_spec()>
-                    <h3>visualizza job specifico</h3>
+                <div id="menu5" class="menu_n" onclick=vis_job_spec() style="display: none;">
+                    <h3>ricerca job utente</h3>
                 </div>
-            </div>           
+                <div id="logout" onclick=logout()>
+                    <h3>logout</h3>
+                </div>
+            </div>
             <div id="contenitore">
                 <fieldset id="fiel_inserisci" class="fiel">
                     <legend>form inserimento nuova richiesta di allenamento</legend>
-                    <label class="label_login">inserire titolo</label>
+                    <label class="label_login">titolo:</label>
                     <input type="text" id="ins_titolo">
-                    <label class="label_login">inserire linguaggio</label>
+                    <label class="label_login">linguaggio:</label>
                     <select id="ins_linguaggio">
                         <option value="python">python</option>
                         <option value="java">java</option>
-                        <option Value="scala">scala</option>
+                        <option value="scala">scala</option>
                         <option value="r">r</option>
                         <option value="c++">c++</option>
                         <option value="julia">julia</option>
                     </select>
-                    <label class="label_login">inserire framework</label>
+                    <label class="label_login">framework:</label>
                     <select id="ins_frame">
                         <option value="nessuno">nessuno</option>
                         <option value="pytorch">pytorch</option>
@@ -53,7 +56,7 @@
                         <option value="apache_mahout">apache_mahout</option>
                         <option value="apache_singa">apache_singa</option>
                     </select>
-                    <label class="label_login">inserire dataset</label>
+                    <label class="label_login">dataset:</label>
                     <input type="text" id="ins_dataset">
                     <label class="label_login">inserire datatype del dataset</label>
                     <select id="ins_datatype">
@@ -61,10 +64,11 @@
                         <option value="avro">avro</option>
                         <option value="json">json</option>
                     </select>
-                    <label class="label_login">inserire model</label>
+                    <label class="label_login">model:</label>
                     <input type="text" id="ins_model">
-                    <br><br>
-                    <button onclick="inserisci()">inserisci nuova richiesta</button>   
+                    <br>
+                    <p id="errore_inserisci"></p>
+                    <button onclick="inserisci()">crea job</button>   
                 </fieldset>          
             </div>
         </div>

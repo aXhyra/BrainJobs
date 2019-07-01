@@ -21,26 +21,29 @@ const frameworks = [
 
 module.exports = {
     create(req, res) {
-        const language = req.body.language;
-        const framework = req.body.framework;
 
-        if (!languages.includes(language)) {
+        if (!languages.includes(req.body.language)) {
             res.status(400).json({
                 success: false,
                 message: 'incorrect language'
             });
-        } else if (!frameworks.includes(framework) && framework) {
+        } else if (!frameworks.includes(req.body.framework) && req.body.framework) {
             res.status(400).json({
                 success: false,
                 message: 'incorrect framework'
             });
+        } else if (req.body.title === '' || req.body.dataset === '' || req.body.dataset_datatype === '' || req.body.model === '') {
+            res.status(400).json({
+                success: false,
+                message: 'All fields must be completed'
+            })
         } else {
             return Job
                 .create({
                     user_id: req.decoded.user_id,
                     title: req.body.title,
-                    language: language,
-                    framework: framework,
+                    language: req.body.language,
+                    framework: req.body.framework,
                     dataset: req.body.dataset,
                     dataset_datatype: req.body.dataset_datatype,
                     model: req.body.model,
@@ -55,10 +58,10 @@ module.exports = {
                     res.status(400).json({
                         success: false,
                         message: err.errors[0].message
-                });
-                console.log(err);
-            })
-            }
+                    });
+                    console.log(err);
+                })
+        }
     },
     userJobs(req, res) {
         return Job
@@ -89,9 +92,9 @@ module.exports = {
                 res.status(400).json({
                     success: false,
                     message: err.errors[0].message
-            });
-            console.log(err);
-        })
+                });
+                console.log(err);
+            })
     },
     allJobs(req, res) {
         if (req.decoded.isAdmin) {
@@ -112,12 +115,12 @@ module.exports = {
                     success: false,
                     message: err.errors[0].message
                 }))
-            } else {
-                res.status(401).json({
-                    success: false,
-                    message: 'Only admin can view all jobs'
-                })
-            }
+        } else {
+            res.status(401).json({
+                success: false,
+                message: 'Only admin can view all jobs'
+            })
+        }
     },
     search(req, res) {
         return Job
@@ -179,22 +182,22 @@ module.exports = {
                     if (job.length !== 0)
                         res.send(job)
                     else {
-                         res.status(404).json({
-                             success: false,
-                             message: 'user not found'
-                         })
+                        res.status(404).json({
+                            success: false,
+                            message: 'user not found'
+                        })
                     }
                 })
                 .catch(err => res.status(400).json({
                     success: false,
                     message: err.errors[0].message
                 }));
-            } else {
-                res.status(401).json({
-                    success: false,
-                    message: "Only admin can view user jobs"
-                })
-            }
+        } else {
+            res.status(401).json({
+                success: false,
+                message: "Only admin can view user jobs"
+            })
+        }
     },
     searchUserJob(req, res) {
         if (req.decoded.isAdmin) {

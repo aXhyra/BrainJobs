@@ -6,34 +6,37 @@
         <script src="inserisci_visualizza.js"></script>
     </head>
     <body id="body">
-        <div id="generale">
-            <div id="menu">
-                <div id="menu0" class="menu_n" onclick=vis_vis()>
-                    <h3>visualizza</h3>
-                </div>
-                <div id="menu1" class="menu_n" onclick=vis_ins()>
-                    <h3>inserisci</h3>
-                </div>
-                <div id="menu2" class="menu_n" onclick=vis_vis_ins()>
-                    <h3>visualizza singolo jobs</h3>
-                </div>
-                <div id="menu3" class="menu_n" onclick=vis_glob()>
-                    <h3>visualizza globale</h3>
-                </div>
-                <div id="menu4" class="menu_n" onclick=vis_spec()>
-                    <h3>visualizza job utente specifico</h3>
-                </div>
-                <div id="menu5" class="menu_n" onclick=vis_job_spec()>
-                    <h3>visualizza job specifico</h3>
-                </div>
-            </div>          
+       <div id="generale">
+           <div id="menu">
+               <div id="menu0" class="menu_n" onclick=vis_vis()>
+                   <h3>i miei job</h3>
+               </div>
+               <div id="menu1" class="menu_n" onclick=vis_ins()>
+                   <h3>nuovo job</h3>
+               </div>
+               <div id="menu2" class="menu_n" onclick=vis_vis_ins()>
+                   <h3>ricerca job</h3>
+               </div>
+               <div id="menu3" class="menu_n" onclick=vis_glob() style="display: none;">
+                   <h3>tutti i job</h3>
+               </div>
+               <div id="menu4" class="menu_n" onclick=vis_spec() style="display: none;">
+                   <h3>ricerca jobs utente</h3>
+               </div>
+               <div id="menu5" class="menu_n" onclick=vis_job_spec() style="display: none;">
+                   <h3>ricerca job utente</h3>
+               </div>
+               <div id="logout" onclick=logout()>
+                   <h3>logout</h3>
+               </div>
+           </div>
             <div id="contenitore">
                 <fieldset  id="fiel_visualizza_singola" class="fiel">
                 <legend>inserire dati per visualizza singola richiesta</legend>
-                <label class="label_login">inserire job_id</label>
-                <input type="text" id="ins_job_id">
-                <br><br>
-                <button id="bot_visualizza_singola" onclick=visualizza_singola()>visualizza richiesta</button>
+                <label class="label_login">seleziona job</label>
+                <p id="ins_job_id">ricerca job in corso ...</p>
+                <p id="errore_visualizza_singola"></p>
+                <button id="bot_visualizza_singola" onclick=visualizza_singola()>cerca</button>
                 </fieldset>                
             </div>
             <p id="visualizza_singola_dati"></p>

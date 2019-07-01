@@ -5,13 +5,9 @@ const http = require('http');
 const https = require('https');
 const fs = require('fs');
 const redirectToHTTPS = require('express-http-to-https').redirectToHTTPS
-const morgan = require('morgan');
 const app = express();
 var router = require('./routers/router');
-const log = require('simple-node-logger').createSimpleLogger('../log.log');
 const helmet = require('helmet');
-
-log.setLevel('debug');
 
 const privateKey = fs.readFileSync('/etc/letsencrypt/live/www.brainjobs.tk/privkey.pem', 'utf8');
 const certificate = fs.readFileSync('/etc/letsencrypt/live/www.brainjobs.tk/cert.pem', 'utf8');
@@ -37,15 +33,10 @@ app.use(redirectToHTTPS());
 
 app.use(router);
 
-app.use(morgan(
-    ':remote-addr - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :req[header] :status :response-time ms :res[content-length] :res[header] ":referrer" ":user-agent"'
-));
-
 // create application/x-www-form-urlencoded parser
 const urlencodedParser = bodyParser.urlencoded({
     extended: false
 })
-const jsonParser = bodyParser.json()
 
 // Starting both http & https servers
 const httpServer = http.createServer(app);

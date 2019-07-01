@@ -9,36 +9,36 @@ const api = apiAdapter(BASE_URL)
 
 router.post('/login', (req, res) => {
     api.post(req.path, req.body)
-    .then(resp => {
-        res.send(resp.data);
-    })
-     .catch(err => {
-         console.log("error during " + req.path + " " + err.response.data.message);
-         res.status(err.response.status).send(err.response.data);
-     })
+        .then(resp => {
+            res.send(resp.data);
+        })
+        .catch(err => {
+            console.log("error during " + req.path + " " + err.response.data.message);
+            res.status(err.response.status).send(err.response.data);
+        })
 })
 
 router.post('/register', (req, res) => {
     api.post(req.path, req.body)
-    .then(resp => {
-        res.send(resp.data);
-    })
-    .catch(err => {
-        console.log("error during " + req.path + " " + err.response.data.message);
-        res.status(err.response.status).send(err.response.data);
-    })
+        .then(resp => {
+            res.send(resp.data);
+        })
+        .catch(err => {
+            console.log("error during " + req.path + " " + err.response.data.message);
+            res.status(err.response.status).send(err.response.data);
+        })
 })
 
 router.post('/api/job/new', middleware.checkToken, (req, res) => {
     req.body.authorization = req.headers['authorization'];
     api.post(req.path, req.body)
-    .then(resp => {
-        res.send(resp.data);
-    })
-     .catch(err => {
-         console.log("error during " + req.path + " " + err.response.data.message);
-         res.status(err.response.status).send(err.response.data);
-     })
+        .then(resp => {
+            res.send(resp.data);
+        })
+        .catch(err => {
+            console.log("error during " + req.path + " " + err.response.data.message);
+            res.status(err.response.status).send(err.response.data);
+        })
 })
 
 router.get('/api/jobs', middleware.checkToken, (req, res) => {
@@ -47,7 +47,7 @@ router.get('/api/jobs', middleware.checkToken, (req, res) => {
     })
         .then(resp => {
             res.send(resp.data);
-            })
+        })
         .catch(err => {
             console.log("error during " + req.path + " " + err.response.data.message);
             res.status(err.response.status).send(err.response.data);
@@ -73,7 +73,7 @@ router.get('/api/jobs/all', middleware.checkToken, (req, res) => {
         headers: req.headers
     })
         .then(resp => {
-           res.send(resp.data);
+            res.send(resp.data);
         })
         .catch(err => {
             console.log("error during " + req.path + " " + err.response.data.message);
@@ -99,7 +99,7 @@ router.get('/api/user/:user_id/job/:job_id', middleware.checkToken, (req, res) =
         headers: req.headers
     })
         .then(resp => {
-           res.send(resp.data);
+            res.send(resp.data);
         })
         .catch(err => {
             console.log("error during " + req.path + " " + err.response.data.message);
@@ -109,12 +109,13 @@ router.get('/api/user/:user_id/job/:job_id', middleware.checkToken, (req, res) =
 
 router.get('/api/users', middleware.checkToken, (req, res) => {
     api.get(req.path, {
-        headers: req.params
+        headers: req.headers
     })
         .then(resp => {
             res.send(resp.data);
         })
         .catch(err => {
+            console.log("error during " + req.path + " " + err.response.data.message);
             res.status(err.response.status).send(err.response.data)
         })
 })

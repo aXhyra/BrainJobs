@@ -1,62 +1,69 @@
-const BASEURL = 'https://www.brainjobs.tk:8443'
+//definizione costante dell'url del gateway
+const base_url = "https://www.brainjobs.tk:8443";
 
-function login()
-{
+//funzione per il login dell'utente
+function login() {
     var user = document.getElementById("user").value;
     var password = document.getElementById("password").value;
-    var dati = {username: user, password: password};
+    var dati = {
+        username: user,
+        password: password
+    };
     $.ajax({
         type: "post",
-        url: BASEURL + '/login',
+        url: base_url + "/login",
         data: dati,
-        success: function(response)
-        {
+        success: function (response) {
             localStorage.setItem('token', response["token"]);
-            localStorage.setItem('admin', response["isAdmin"]);
-            location.href="visualizza.html";
+            location.href = "visualizza.html";
         },
-        error:function(response)
-        {
-            alert("errore nel login");
-            alert(response.status+response.message);
+        error: function (response) {
+            metodo_errore("fiel1", "errore_login", response);
         }
     })
 }
 
-function registrazione()
-{
+//funzione per la registrazione del utente
+function registrazione() {
     var email = document.getElementById("reg_email").value;
     var iduser = document.getElementById("reg_iduser").value;
     var password = document.getElementById("reg_password").value;
-    var dati = {username: iduser, password:password, email:email};
+    var dati = {
+        username: iduser,
+        password: password,
+        email: email
+    };
     $.ajax({
         type: "post",
-        url: BASEURL + "/register",
+        url: base_url + "/register",
         data: dati,
-        success: function(response)
-        {
-            alert("registrazione effettuato con successo");
-            location.href="login.html";
+        success: function (response) {
+            location.href = "login.html";
         },
-        error:function(response)
-        {
-            alert("errore nella registrazione");
-            alert(response.status+response.message);
+        error: function (response) {
+            metodo_errore("fiel2", "errore_registrazione", response);
         }
     })
 }
 
-function vis_login()
-{
-    location.href="login.html";
+//funzione che avvisa di un errore
+function metodo_errore(fiel, paragrafo, response) {
+    document.getElementById(fiel).style.borderColor = "red";
+    var paragrafo_errore = document.getElementById(paragrafo);
+    paragrafo_errore.innerText = "messaggio di errore: " + response.responseJSON.message;
+    paragrafo_errore.style.color = "red";
 }
 
-function vis_home()
-{
-    location.href="index.html";
+//funzioni per la navigazione delle pagine--------------------------------------
+function vis_login() {
+    location.href = "login.html";
 }
 
-function vis_registrazione()
-{
-    location.href="registrazione.html";
+function vis_home() {
+    location.href = "index.html";
 }
+
+function vis_registrazione() {
+    location.href = "registrazione.html";
+}
+//fine funzione per la navigazione delle pagine---------------------------------

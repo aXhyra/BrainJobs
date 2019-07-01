@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon .",
+    "start": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "debug": "node --inspect-brk server.js"
   },
@@ -18,9 +18,7 @@
     "express-http-to-https": "^1.1.4",
     "helmet": "^3.18.0",
     "jsonwebtoken": "^8.5.1",
-    "morgan": "^1.9.1",
     "sequelize": "^5.9.0",
-    "simple-node-logger": "^18.12.22",
     "sqlite3": "^4.0.9",
     "tingodb": "^0.6.1",
     "uuid": "^3.3.2"

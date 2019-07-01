@@ -4,10 +4,11 @@
     border-color: black;
     border-width: 20px;
     border-radius: 5px;
-    width: 95%;
+    width: 90%;
     text-align: justify;
     padding: 1%;
-    margin-left: 2%;
+    margin-left: 4%;
+    margin-top:1%;
 }
 
 #generale
@@ -60,6 +61,12 @@
     padding: 1%;
 }
 
+#testo_interno
+{
+    width: 90%;
+    margin-left:4%;
+}
+
 .label_login
 {
     margin-top:2%;
@@ -71,6 +78,8 @@
     margin-top:1%;
     border-color: white;
     background-color: whitesmoke;
+    width:90%;
+    margin-left:4%;
 }
 
 #immagini
@@ -80,11 +89,12 @@
 }
 #img1
 {
-    margin-right:10%;
+    margin-left:1%;
+    margin-right:8%;
 }
 #img2
 {
-    margin-right:10%;
+    margin-right:8%;
 }
 
 #sezione_visualizza
@@ -108,7 +118,8 @@
     padding:1%;
     border-radius:5px;
 }
-#menu0
+
+.menu_n
 {
     border:1px solid grey;
     border-radius:5px;
@@ -116,12 +127,13 @@
     float:left;
     padding:5px;
 }
-.menu_n
+
+#logout
 {
     border:1px solid grey;
     border-radius:5px;
     background-color: whitesmoke;
-    float:left;
+    float:right;
     padding:5px;
 }
 

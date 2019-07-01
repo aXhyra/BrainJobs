@@ -7,29 +7,32 @@
         <script src="inserisci_visualizza.js"></script>
     </head>
     <body id="body">
-        <div id="generale">           
+        <div id="generale">
             <div id="menu">
                 <div id="menu0" class="menu_n" onclick=vis_vis()>
-                    <h3>visualizza</h3>
+                    <h3>i miei job</h3>
                 </div>
                 <div id="menu1" class="menu_n" onclick=vis_ins()>
-                    <h3>inserisci</h3>
+                    <h3>nuovo job</h3>
                 </div>
                 <div id="menu2" class="menu_n" onclick=vis_vis_ins()>
-                    <h3>visualizza singolo jobs</h3>
+                    <h3>ricerca job</h3>
                 </div>
-                <div id="menu3" class="menu_n" onclick=vis_glob()>
-                    <h3>visualizza globale</h3>
+                <div id="menu3" class="menu_n" onclick=vis_glob() style="display: none;">
+                    <h3>tutti i job</h3>
                 </div>
-                <div id="menu4" class="menu_n" onclick=vis_spec()>
-                    <h3>visualizza job utente specifico</h3>
+                <div id="menu4" class="menu_n" onclick=vis_spec() style="display: none;">
+                    <h3>ricerca jobs utente</h3>
                 </div>
-                <div id="menu5" class="menu_n" onclick=vis_job_spec()>
-                    <h3>visualizza job specifico</h3>
+                <div id="menu5" class="menu_n" onclick=vis_job_spec() style="display: none;">
+                    <h3>ricerca job utente</h3>
                 </div>
-            </div>           
+                <div id="logout" onclick=logout()>
+                    <h3>logout</h3>
+                </div>
+            </div>
             <div id="sezione_visualizza">
-                <p id="visualizza_dati">visualizza dati incorso ...</p>              
+                <p id="visualizza_dati">Caricamento dei dati in corso</p>              
             </div>
         </div>
     </body>
