@@ -45,6 +45,12 @@ typings/
 # Idea project files
 .idea/
 
+# Vs Code files
+.vscode/
+
+# R Histoy file
+.Rhistory
+
 # Optional eslint cache
 .eslintcache
 
@@ -63,4 +69,5 @@ typings/
 # next.js build output
 .next
 
+# macOS resources
 .DS_Store
