@@ -25,7 +25,7 @@ Ulteriori dettagli nelle sottosezioni dei rispettivi servizi.
 Tutti i servizi sono stati testati con node (v12.5.0 e V8.16.0) e npm v6.9.0
 su linux (debian 9), macOS (10.14.5 e macOS 10.15beta) e wsl su windows 10.
 Per l'avvio e l'installazione delle dipendenze é disponibile lo script start.sh che si occuperá di tutto
-Sono richiesti openssl, nodeJs e npm.
+Sono richiesti nodeJs e npm.
 Una volta lanciato lo script attendere che l'installazione e l'avvio terminino, poi aprire il browser su http://localhost:8080
 
 ## Backend
