@@ -66,17 +66,17 @@ POST:
 * /register
 
 GET:
-* /api/jobs
-* /api/job/{job_id}
+* /api/jobs Restituisce un json con tutti i job dell'utente loggato
+* /api/job/{job_id} Restituisce tutti i dettagli di {job_id} ({job_id} debe essere dell'utente loggato)
 
 chiamete riservate all'utente admin (sempre GET):
 
-* /api/jobs/all
-* /api/users
-* /api/user/{user_id}/jobs
-* /api/user/{user_id}/job/{job_id}
+* /api/jobs/all Restutisce tutti i job di tutti gli utenti
+* /api/users Restituisce tutti gli utenti
+* /api/user/{user_id}/jobs Restituisce tutti i job dell'utente {user_id}
+* /api/user/{user_id}/job/{job_id} Restituisce tutti i dettagli del job {job_id} dell'utente {user_id}
 
-Tutte le chiamate che hanno /api nel path richiedono che l'utente sia autenticato (campo 'Authorization' nell'header della richiesta deve contenere il token jwt),
+Tutte le chiamate che hanno /api nel path richiedono che l'utente sia autenticato (il campo 'Authorization' nell'header della richiesta deve contenere il token jwt),
 il sistema in caso contrario ritorna un 401-Unauthorized.
 Sia il gateway che il backend controllano che il token fornito sia valido e non scaduto.
 
