@@ -4,6 +4,7 @@ BrainJobs
 ## Introduzione
 
 Servizio completo disponibile su https://www.brainjobs.tk
+Github (disponibile dal giorno successivo alla chiusura della consegna) https://github.com/aXhyra/BrainJobs
 
 Nota: nella versione consegnata é stata disabilitata (commentata) la parte relativa ad https per problemi
 riscontrati con i certificati autofirmati, per cui la questa versione é sprovvista di https a differenza di quella
