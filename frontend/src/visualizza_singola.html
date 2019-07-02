@@ -1,43 +1,70 @@
 <!DOCTYPE html>
+<html lang="it">
     <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>BrainJobs</title>
         <link href="stile.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
         <script src="inserisci_visualizza.js"></script>
     </head>
     <body id="body">
-       <div id="generale">
-           <div id="menu">
-               <div id="menu0" class="menu_n" onclick=vis_vis()>
-                   <h3>i miei job</h3>
-               </div>
-               <div id="menu1" class="menu_n" onclick=vis_ins()>
-                   <h3>nuovo job</h3>
-               </div>
-               <div id="menu2" class="menu_n" onclick=vis_vis_ins()>
-                   <h3>ricerca job</h3>
-               </div>
-               <div id="menu3" class="menu_n" onclick=vis_glob() style="display: none;">
-                   <h3>tutti i job</h3>
-               </div>
-               <div id="menu4" class="menu_n" onclick=vis_spec() style="display: none;">
-                   <h3>ricerca jobs utente</h3>
-               </div>
-               <div id="menu5" class="menu_n" onclick=vis_job_spec() style="display: none;">
-                   <h3>ricerca job utente</h3>
-               </div>
-               <div id="logout" onclick=logout()>
-                   <h3>logout</h3>
-               </div>
-           </div>
+
+        <div class="w3-top">
+            <div id="menu" class="w3-bar w3-blue">
+                <a class="w3-bar-item w3-button w3-padding-large w3-hide-large w3-right" href="javascript:void(0)"
+                    onclick="nascondi_barra_mobile()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+                <a href="javascript:void(0)" onclick="vis_home()"
+                    class="w3-bar-item w3-button w3-padding-large">Brainjobs</a>
+                <a href="javascript:void(0)" onclick="logout()"
+                    class="w3-bar-item w3-button w3-padding-large w3-hide-small w3-hide-medium w3-right">Logout</a>
+                <a id="menu0" href="javascript:void(0)" onclick="vis_vis()"
+                    class="w3-bar-item w3-button w3-padding-large w3-hide-small w3-hide-medium w3-right">I miei jobs</a>
+                <a id="menu1" ref="javascript:void(0)" onclick="vis_ins()"
+                    class="w3-bar-item w3-button w3-padding-large w3-hide-small w3-hide-medium w3-right">Nuovo job</a>
+                <a id="menu2" href="javascript:void(0)" onclick="vis_vis_ins()"
+                    class="w3-bar-item w3-button w3-padding-large w3-hide-small w3-hide-medium w3-right">Ricerca job</a>
+                <a id="menu3" href="javascript:void(0)" onclick="vis_glob()" style="display: none;"
+                    class="w3-bar-item w3-button w3-padding-large w3-hide-small w3-hide-medium w3-right">Tutti i job</a>
+                <a id="menu4" href="javascript:void(0)" onclick="vis_spec()" style="display: none;"
+                    class="w3-bar-item w3-button w3-padding-large w3-hide-small w3-hide-medium w3-right">Ricerca jobs
+                    utente</a>
+                <a id="menu5" href="javascript:void(0)" onclick="vis_job_spec()" style="display: none;"
+                    class="w3-bar-item w3-button w3-padding-large w3-hide-small w3-hide-medium w3-right">Ricerca job
+                    utente</a>
+            </div>
+        </div>
+
+        <!-- Navbar on small screens (remove the onclick attribute if you want the navbar to always show on top of the content when clicking on the links) -->
+        <div id="navbar" class="w3-bar-block w3-black w3-hide w3-hide-large w3-top" style="margin-top:45px">
+            <a id="menu0-mobile" href="javascript:void(0)" class="w3-bar-item w3-button w3-padding-large"
+                onclick="vis_vis()">I miei jobs</a>
+            <a id="menu1-mobile" href="javascript:void(0)" class="w3-bar-item w3-button w3-padding-large"
+                onclick="vis_ins()">Nuovo job</a>
+            <a id="menu2-mobile" href="javascript:void(0)" class="w3-bar-item w3-button w3-padding-large"
+                onclick="vis_vis_ins()">Ricerca job</a>
+            <a id="menu3-mobile" href="javascript:void(0)" class="w3-bar-item w3-button w3-padding-large"
+                style="display: none;" onclick="vis_glob()">Tutti i job</a>
+            <a id="menu4-mobile" href="javascript:void(0)" class="w3-bar-item w3-button w3-padding-large"
+                style="display: none;" onclick="vis_spec()">Ricerca jobs utente</a>
+            <a id="menu5-mobile" href="javascript:void(0)" class="w3-bar-item w3-button w3-padding-large"
+                style="display: none;" onclick="vis_job_spec()">Ricerca job utente</a>
+            <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding-large" onclick="logout()">Logout</a>
+        </div>
+        <div class="w3-content" style="max-width:2000px;margin-top:100px">
             <div id="contenitore">
                 <fieldset  id="fiel_visualizza_singola" class="fiel">
-                <legend>inserire dati per visualizza singola richiesta</legend>
-                <label class="label_login">seleziona job</label>
-                <p id="ins_job_id">ricerca job in corso ...</p>
+                <div class="w3-container w3-blue">
+                    <h3>Cerca job</h3>
+                </div>
+                <label class="label_login w3-text-blue w3-medium"><b>Seleziona job</b>
+                    <p id="ins_job_id">ricerca job in corso ...</p>
+                </label>
                 <p id="errore_visualizza_singola"></p>
-                <button id="bot_visualizza_singola" onclick=visualizza_singola()>cerca</button>
-                </fieldset>                
+                <button class="w3-btn w3-blue" id="bot_visualizza_singola" onclick=visualizza_singola()>cerca</button>
+                </fieldset>
             </div>
             <p id="visualizza_singola_dati"></p>
         </div>

@@ -1,75 +1,107 @@
 <!DOCTYPE html>
-<html>
+<html lang="it">
     <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>BrainJobs</title>
         <link href="stile.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
         <script src="inserisci_visualizza.js"></script>
     </head>
     <body id="body">
-        <div id="generale">
-            <div id="menu">
-                <div id="menu0" class="menu_n" onclick=vis_vis()>
-                    <h3>i miei job</h3>
-                </div>
-                <div id="menu1" class="menu_n" onclick=vis_ins()>
-                    <h3>nuovo job</h3>
-                </div>
-                <div id="menu2" class="menu_n" onclick=vis_vis_ins()>
-                    <h3>ricerca job</h3>
-                </div>
-                <div id="menu3" class="menu_n" onclick=vis_glob() style="display: none;">
-                    <h3>tutti i job</h3>
-                </div>
-                <div id="menu4" class="menu_n" onclick=vis_spec() style="display: none;">
-                    <h3>ricerca jobs utente</h3>
-                </div>
-                <div id="menu5" class="menu_n" onclick=vis_job_spec() style="display: none;">
-                    <h3>ricerca job utente</h3>
-                </div>
-                <div id="logout" onclick=logout()>
-                    <h3>logout</h3>
-                </div>
+
+        <div class="w3-top">
+            <div id="menu" class="w3-bar w3-blue">
+                <a class="w3-bar-item w3-button w3-padding-large w3-hide-large w3-right" href="javascript:void(0)"
+                    onclick="nascondi_barra_mobile()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+                <a href="javascript:void(0)" onclick="vis_home()"
+                    class="w3-bar-item w3-button w3-padding-large">Brainjobs</a>
+                <a href="javascript:void(0)" onclick="logout()"
+                    class="w3-bar-item w3-button w3-padding-large w3-hide-small w3-hide-medium w3-right">Logout</a>
+                <a id="menu0" href="javascript:void(0)" onclick="vis_vis()"
+                    class="w3-bar-item w3-button w3-padding-large w3-hide-small w3-hide-medium w3-right">I miei jobs</a>
+                <a id="menu1" ref="javascript:void(0)" onclick="vis_ins()"
+                    class="w3-bar-item w3-button w3-padding-large w3-hide-small w3-hide-medium w3-right">Nuovo job</a>
+                <a id="menu2" href="javascript:void(0)" onclick="vis_vis_ins()"
+                    class="w3-bar-item w3-button w3-padding-large w3-hide-small w3-hide-medium w3-right">Ricerca job</a>
+                <a id="menu3" href="javascript:void(0)" onclick="vis_glob()" style="display: none;"
+                    class="w3-bar-item w3-button w3-padding-large w3-hide-small w3-hide-medium w3-right">Tutti i job</a>
+                <a id="menu4" href="javascript:void(0)" onclick="vis_spec()" style="display: none;"
+                    class="w3-bar-item w3-button w3-padding-large w3-hide-small w3-hide-medium w3-right">Ricerca jobs
+                    utente</a>
+                <a id="menu5" href="javascript:void(0)" onclick="vis_job_spec()" style="display: none;"
+                    class="w3-bar-item w3-button w3-padding-large w3-hide-small w3-hide-medium w3-right">Ricerca job
+                    utente</a>
             </div>
+        </div>
+
+        <!-- Navbar on small screens (remove the onclick attribute if you want the navbar to always show on top of the content when clicking on the links) -->
+        <div id="navbar" class="w3-bar-block w3-black w3-hide w3-hide-large w3-top" style="margin-top:45px">
+            <a id="menu0" href="javascript:void(0)" class="w3-bar-item w3-button w3-padding-large" onclick="vis_vis()">I
+                miei jobs</a>
+            <a id="menu1" href="javascript:void(0)" class="w3-bar-item w3-button w3-padding-large"
+                onclick="vis_ins()">Nuovo job</a>
+            <a id="menu2" href="javascript:void(0)" class="w3-bar-item w3-button w3-padding-large"
+                onclick="vis_vis_ins()">Ricerca job</a>
+            <a id="menu3" href="javascript:void(0)" class="w3-bar-item w3-button w3-padding-large"
+                style="display: none;" onclick="vis_glob()">Tutti i job</a>
+            <a id="menu4" href="javascript:void(0)" class="w3-bar-item w3-button w3-padding-large"
+                style="display: none;" onclick="vis_spec()">Ricerca jobs utente</a>
+            <a id="menu5" href="javascript:void(0)" class="w3-bar-item w3-button w3-padding-large"
+                style="display: none;" onclick="vis_job_spec()">Ricerca job utente</a>
+            <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding-large" onclick="logout()">Logout</a>
+        </div>
+         <div class="w3-content" style="max-width:2000px;margin-top:100px">
             <div id="contenitore">
                 <fieldset id="fiel_inserisci" class="fiel">
-                    <legend>form inserimento nuova richiesta di allenamento</legend>
-                    <label class="label_login">titolo:</label>
-                    <input type="text" id="ins_titolo">
-                    <label class="label_login">linguaggio:</label>
-                    <select id="ins_linguaggio">
-                        <option value="python">python</option>
-                        <option value="java">java</option>
-                        <option value="scala">scala</option>
-                        <option value="r">r</option>
-                        <option value="c++">c++</option>
-                        <option value="julia">julia</option>
-                    </select>
-                    <label class="label_login">framework:</label>
-                    <select id="ins_frame">
-                        <option value="nessuno">nessuno</option>
-                        <option value="pytorch">pytorch</option>
-                        <option value="tensorflow">tensorflow</option>
-                        <option Value="caffe">caffe</option>
-                        <option value="keras">keras</option>
-                        <option value="deeplearning4j">deeplearning4j++</option>
-                        <option value="apache_mahout">apache_mahout</option>
-                        <option value="apache_singa">apache_singa</option>
-                    </select>
-                    <label class="label_login">dataset:</label>
-                    <input type="text" id="ins_dataset">
-                    <label class="label_login">inserire datatype del dataset</label>
-                    <select id="ins_datatype">
-                        <option value="csv">csv</option>
-                        <option value="avro">avro</option>
-                        <option value="json">json</option>
-                    </select>
-                    <label class="label_login">model:</label>
-                    <input type="text" id="ins_model">
+                    <div class="w3-container w3-blue">
+                        <h3>Nuovo job</h3>
+                    </div>
+                     <label class="label_login w3-text-blue w3-large"><b>Titolo</b>
+                        <input id="ins_titolo" name="ins_titolo" class="w3-input w3-border w3-light-grey"
+                         type="text">
+                     </label>
+                     <label class="label_login w3-text-blue w3-large"><b>Linguaggio</b>
+                        <select class="w3-light-grey w3-large w3-select" id="ins_linguaggio">
+                            <option value="python">python</option>
+                            <option value="java">java</option>
+                            <option value="scala">scala</option>
+                            <option value="r">r</option>
+                            <option value="c++">c++</option>
+                            <option value="julia">julia</option>
+                        </select>
+                     </label>
+                    <label class="label_login w3-text-blue w3-large"><b>Framework</b>
+                        <select class="w3-light-grey w3-large w3-select" id="ins_frame">
+                            <option value="nessuno">nessuno</option>
+                            <option value="pytorch">pytorch</option>
+                            <option value="tensorflow">tensorflow</option>
+                            <option Value="caffe">caffe</option>
+                            <option value="keras">keras</option>
+                            <option value="deeplearning4j">deeplearning4j++</option>
+                            <option value="apache_mahout">apache_mahout</option>
+                            <option value="apache_singa">apache_singa</option>
+                        </select>
+                    </label>
+                     <label class="label_login w3-text-blue w3-large"><b>Dataset</b>
+                        <input id="ins_dataset" name="ins_dataset" class="w3-input w3-border w3-light-grey" type="text">
+                    </label>
+                    <label class="label_login w3-text-blue w3-large"><b>Dataset datatype</b>
+                        <select class="w3-light-grey w3-large w3-select" id="ins_datatype">
+                            <option value="csv">csv</option>
+                            <option value="avro">avro</option>
+                            <option value="json">json</option>
+                        </select>
+                    </label>
+                    <label class="label_login w3-text-blue w3-large"><b>Model</b>
+                        <input id="ins_model" name="ins_model" class="w3-input w3-border w3-light-grey" type="text">
+                    </label>
                     <br>
                     <p id="errore_inserisci"></p>
-                    <button onclick="inserisci()">crea job</button>   
-                </fieldset>          
+                    <button class="w3-btn w3-blue" onclick="inserisci()">crea job</button>
+                </fieldset>
             </div>
         </div>
     </body>

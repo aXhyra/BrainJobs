@@ -1,5 +1,8 @@
 //definizione costante dell'url del gateway
+/* Versione su https://www.brainjobs.tk
 const base_url = "https://www.brainjobs.tk:8443";
+*/
+const base_url = "http://localhost:8082"
 
 //funzione per il login dell'utente
 function login() {
@@ -50,7 +53,7 @@ function registrazione() {
 function metodo_errore(fiel, paragrafo, response) {
     document.getElementById(fiel).style.borderColor = "red";
     var paragrafo_errore = document.getElementById(paragrafo);
-    paragrafo_errore.innerText = "messaggio di errore: " + response.responseJSON.message;
+    paragrafo_errore.innerText = "Errore: " + response.responseJSON.message;
     paragrafo_errore.style.color = "red";
 }
 
@@ -65,5 +68,14 @@ function vis_home() {
 
 function vis_registrazione() {
     location.href = "registrazione.html";
+}
+
+function nascondi_barra_mobile() {
+    var x = document.getElementById("navbar");
+    if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+    } else {
+        x.className = x.className.replace(" w3-show", "");
+    }
 }
 //fine funzione per la navigazione delle pagine---------------------------------

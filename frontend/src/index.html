@@ -1,67 +1,77 @@
 <!DOCTYPE html>
-<html>
+<html lang="it">
     <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>BrainJobs</title>
         <link href="stile.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
         <script src="index.js"></script>
     </head>
     <body id="body">
-        <div id="primo">
-            <div>
-                <div id="testo_sopra">
-                    <div id="titolo">
-                        <h1>
-                            BrainJobs
-                        </h1>
-                    </div>
-                    <div id="autenticazione">
-                        <div id="menu0" class="menu_n" onclick=vis_home()>
-                            <h3>home</h3>
-                        </div>
-                        <div id="menu1" class="menu_n" onclick=vis_login()>
-                            <h3>login</h3>
-                        </div>
-                        <div id="menu2" class="menu_n" onclick=vis_registrazione()>
-                            <h3>registrazione</h3>
-                        </div>
-                    </div>
-                </div>
-                <div id="testo_sotto">
-                    <div>
-                        <h2>
-                            BrainJobs è un servizio cloud di tipo Software-as-a-Service (SaaS) che offre ai
-                            suoi utenti la possibilità di “allenare” modelli di apprendimento automatico, di valutarne le
-                            prestazioni ed (eventualmente) riutilizzarli per effettuare simulazioni.    
-                        </h2>
-                        <h4 id="testo_interno">
-                                Il sistema permette agli utenti di effettuare richieste di allenamento o simulazione caricando i
-                                dati insieme al modello o utilizzandone uno già precedentemente allenato e salvato nel
-                                proprio archivio.
-                                <br>
-                                In base al linguaggio o al framework utilizzato per il codice del modello,
-                                BrainJobs lancia la computazione in un particolare ambiente di esecuzione che verrà
-                                istanziato “on-the-fly” in un’altra piattaforma cloud di tipo Serverless basata su containers
-                                (es: Apache OpenWhisk, Knative, …).
-                                <br>
-                                Gli utenti possono sottomettere più richieste consecutive. Esse verranno gestite in parallelo
-                                in un sistema a coda.
-                                <br>
-                                Ogni richiesta di un utente corrisponde ad un task di lavoro (job).
-                                <br>
-                                Gli utenti possono controllare lo stato delle loro richieste dalla dashboard di BrainJobs, ed
-                                una volta terminate, visualizzarne i risultati.
-                                <br>
-                                Successivamente, il sistema permette di scartare o salvare il modello per utilizzi futuri.   
-                        </h4>
-                    </div>
-                    <div id="immagini">
-                        <img id="img1" src="immagine1.png">
-                        <img id="img2" src="immagine2.png">
-                        <img id="img3" src="immagine3.png">
-                    </div>
-                </div>
+
+        <!-- Navbar -->
+        <div class="w3-top">
+            <div id="menu" class="w3-bar w3-blue">
+                <a class="w3-bar-item w3-button w3-padding-large w3-hide-large w3-right"
+                    href="javascript:void(0)" onclick="nascondi_barra_mobile()" title="Toggle Navigation Menu"><i
+                        class="fa fa-bars"></i></a>
+                <a href="javascript:void(0)" onclick="vis_home()" class="w3-bar-item w3-button w3-padding-large">Brainjobs</a>
+                <a href="javascript:void(0)" onclick="vis_login()"
+                    class="w3-bar-item w3-button w3-padding-large w3-hide-small w3-hide-medium w3-right">Login</a>
+                <a href="javascript:void(0)" onclick="vis_registrazione()"
+                    class="w3-bar-item w3-button w3-padding-large w3-hide-small w3-hide-medium
+                    w3-right">Registrazione</a>
             </div>
         </div>
+
+        <!-- Navbar on small screens (remove the onclick attribute if you want the navbar to always show on top of the content when clicking on the links) -->
+        <div id="navbar" class="w3-bar-block w3-black w3-hide w3-hide-large w3-top"
+            style="margin-top:45px">
+            <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding-large" onclick="vis_login()">Login</a>
+            <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding-large"
+                onclick="vis_registrazione()">Registrazione</a>
+        </div>
+                <div class="w3-content" style="max-width:2000px;margin-top:46px;">
+                    <div class="w3-container w3-content w3-center w3-padding-64"
+                        style="max-width:80%;">
+                        <div id="testo_sotto">
+                            <div>
+                                <h2>
+                                    BrainJobs è un servizio cloud di tipo Software-as-a-Service (SaaS) che offre ai
+                                    suoi utenti la possibilità di “allenare” modelli di apprendimento automatico, di valutarne le
+                                    prestazioni ed (eventualmente) riutilizzarli per effettuare simulazioni.
+                                </h2>
+                                <h4 id="testo_interno">
+                                        Il sistema permette agli utenti di effettuare richieste di allenamento o simulazione caricando i
+                                        dati insieme al modello o utilizzandone uno già precedentemente allenato e salvato nel
+                                        proprio archivio.
+                                        <br>
+                                        In base al linguaggio o al framework utilizzato per il codice del modello,
+                                        BrainJobs lancia la computazione in un particolare ambiente di esecuzione che verrà
+                                        istanziato “on-the-fly” in un’altra piattaforma cloud di tipo Serverless basata su containers
+                                        (es: Apache OpenWhisk, Knative, …).
+                                        <br>
+                                        Gli utenti possono sottomettere più richieste consecutive. Esse verranno gestite in parallelo
+                                        in un sistema a coda.
+                                        <br>
+                                        Ogni richiesta di un utente corrisponde ad un task di lavoro (job).
+                                        <br>
+                                        Gli utenti possono controllare lo stato delle loro richieste dalla dashboard di BrainJobs, ed
+                                        una volta terminate, visualizzarne i risultati.
+                                        <br>
+                                        Successivamente, il sistema permette di scartare o salvare il modello per utilizzi futuri.
+                                </h4>
+                            </div>
+                            <div id="immagini" class="w3-row-padded">
+                                <img id="img1" src="immagine1.png" alt="img1">
+                                <img id="img2" src="immagine2.png" alt="img2">
+                                <img id="img3" src="immagine3.png" alt="img3">
+                            </div>
+                        </div>
+                    </div>
+                </div>
     </body>
 </html>

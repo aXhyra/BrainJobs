@@ -13,7 +13,7 @@
 
 #generale
 {
-    background-color: #5ac0e1;
+    background-color: #7CC1CF;
     border-color: black;
     border-width: 20px;
     border-radius: 5px;
@@ -25,7 +25,7 @@
 
 #body
 {
-    background-color: #5ac0e1;
+    background-color: #7CC1CF;
     border-radius:5px;
 }
 
@@ -59,6 +59,7 @@
 {
     background-color: whitesmoke;
     padding: 1%;
+    border-radius: 5px;
 }
 
 #testo_interno
@@ -69,14 +70,14 @@
 
 .label_login
 {
-    margin-top:2%;
-    display: block;
+     margin-top:2%;
+     display: block;
 }
 
 .fiel
 {
     margin-top:1%;
-    border-color: white;
+    border-color: #ababab !important;
     background-color: whitesmoke;
     width:90%;
     margin-left:4%;
@@ -113,10 +114,8 @@
 
 #menu
 {
-    background-color: #70e1f8;
-    height: 70px;
-    padding:1%;
-    border-radius:5px;
+    background-color: #7CC1CF;
+    border-radius: 5px;
 }
 
 .menu_n
