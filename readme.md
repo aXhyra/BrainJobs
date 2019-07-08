@@ -65,6 +65,9 @@ POST:
 * /login
 * /register
 
+Solo per gli utenti loggati:
+* /api/job/new Aggiunge un nuovo job all'utente loggato
+
 GET:
 * /api/jobs Restituisce un json con tutti i job dell'utente loggato
 * /api/job/{job_id} Restituisce tutti i dettagli di {job_id} ({job_id} debe essere dell'utente loggato)
