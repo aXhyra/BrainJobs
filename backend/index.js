@@ -30,14 +30,14 @@ app.post('/login', urlencodedParser, controllers.user.search);
 // POST /register
 app.post('/register', urlencodedParser, controllers.user.create);
 
-// POST /api/job/new
-app.post('/api/job/new', urlencodedParser, middleware.checkToken, controllers.job.create);
+// POST /api/jobs
+app.post('/api/jobs', urlencodedParser, middleware.checkToken, controllers.job.create);
 
 
 //----------------------------- GET calls ----------------------------------------//
 
 // GET /api/job/:job_id
-app.get('/api/job/:job_id', urlencodedParser, middleware.checkToken, controllers.job.search);
+app.get('/api/jobs/:job_id', urlencodedParser, middleware.checkToken, controllers.job.search);
 
 // GET /api/jobs
 app.get('/api/jobs', urlencodedParser, middleware.checkToken, controllers.job.userJobs);
@@ -49,7 +49,7 @@ app.get('/api/jobs/all', urlencodedParser, middleware.checkToken, controllers.jo
 app.get('/api/user/:user_id/jobs', urlencodedParser, middleware.checkToken, controllers.job.searchUserJobs);
 
 // GET /api/user/:user_id/job/:job_id
-app.get('/api/user/:user_id/job/:job_id', urlencodedParser, middleware.checkToken, controllers.job.searchUserJob);
+app.get('/api/user/:user_id/jobs/:job_id', urlencodedParser, middleware.checkToken, controllers.job.searchUserJob);
 
 // GET /api/users
 app.get('/api/users', urlencodedParser, middleware.checkToken, controllers.user.getUsers);

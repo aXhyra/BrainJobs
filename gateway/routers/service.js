@@ -34,8 +34,8 @@ router.post('/register', (req, res) => {
         })
 })
 
-// POST /api/job/new
-router.post('/api/job/new', middleware.checkToken, (req, res) => {
+// POST /api/jobs
+router.post('/api/jobs', middleware.checkToken, (req, res) => {
     req.body.authorization = req.headers['authorization'];
     api.post(req.path, req.body)
         .then(resp => {
@@ -63,8 +63,8 @@ router.get('/api/jobs', middleware.checkToken, (req, res) => {
         })
 })
 
-// GET /api/job/:job_id
-router.get('/api/job/:job_id', middleware.checkToken, (req, res) => {
+// GET /api/jobs/:job_id
+router.get('/api/jobs/:job_id', middleware.checkToken, (req, res) => {
     api.get(req.path, {
         headers: req.headers
     })
@@ -106,7 +106,7 @@ router.get('/api/user/:user_id/jobs', middleware.checkToken, (req, res) => {
         })
 })
 
-// GET /api/user/:user_id/job/:job_id
+// GET /api/user/:user_id/jobs/:job_id
 router.get('/api/user/:user_id/job/:job_id', middleware.checkToken, (req, res) => {
     api.get(req.path, {
         headers: req.headers

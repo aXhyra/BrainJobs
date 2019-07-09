@@ -190,7 +190,7 @@ function inserisci() {
     }
     $.ajax({
         type: "post",
-        url: base_url + "/api/job/new",
+        url: base_url + "/api/jobs",
         headers: {
             "Authorization": localStorage.getItem('token')
         },
