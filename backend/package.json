@@ -17,7 +17,7 @@
     "express": "^4.17.1",
     "express-http-to-https": "^1.1.4",
     "helmet": "^3.18.0",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.0",
     "sequelize": "^5.15.1",
     "sqlite3": "^4.0.9",
     "tingodb": "^0.6.1",
